@@ -24,7 +24,7 @@ type 'a t = (id * 'a) list (* 環境の型 *)
 exception Not_bound (* 環境に変数の情報がないときに投げられる例外 *)
 
 let empty = [] (* 空の環境 *)
-let extend x v env = (x,v)::list (* 環境envに新しい変数の束縛情報(x,v)を追加する関数 *)
+let extend x v env = (x,v)::env (* 環境envに新しい変数の束縛情報(x,v)を追加する関数 *)
 let rec lookup x env = (* 環境envから、変数xの束縛情報を探す関数 *)
     try List.assoc x env with Not_found -> raise Not_bound (* あれば束縛している値vを、なければ例外を、返す *)
 
